@@ -3,10 +3,12 @@ import { Button, message, Steps, theme } from "antd";
 import { useState } from "react";
 import BasicDetails from "./BasicDetails";
 import RegistrationDetails from "./RegistrationDetails";
-import {ConfigProvider} from "antd";
+import Location from "./Location";
+import Description from "./Description";
+import { ConfigProvider } from "antd";
 
-import { Stack} from '@chakra-ui/react'
-import { Flex } from '@chakra-ui/react'
+import { Stack } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 
 function Details() {
   const steps = [
@@ -15,8 +17,16 @@ function Details() {
       content: <BasicDetails />,
     },
     {
+      title: "Location",
+      content: <Location />,
+    },
+    {
+      title: "Description",
+      content: <Description />,
+    },
+    {
       title: "Registration Details",
-      content: <RegistrationDetails/>,
+      content: <RegistrationDetails />,
     },
   ];
 
@@ -34,24 +44,26 @@ function Details() {
   }));
   const contentStyle = {
     // lineHeight: '260px',
-    textAlign: 'center',
+    textAlign: "center",
     color: token.colorTextTertiary,
     backgroundColor: token.colorFillAlter,
     borderRadius: token.borderRadiusLG,
     //border: `1px dashed ${token.colorBorder}`,
     marginTop: 16,
-    };
+  };
 
   return (
-  <ConfigProvider theme={{
-    token: {
-      colorPrimary: 'gray-7',
-      colorTextTertiary : "black",
-      colorFillAlter : "black",
-      borderRadiusLG : "20px"
-    },
-  }}>
-        <Flex minH={"100vh"} bg={"white"} >
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: "gray-7",
+          colorTextTertiary: "black",
+          colorFillAlter: "black",
+          borderRadiusLG: "20px",
+        },
+      }}
+    >
+      <Flex minH={"100vh"} bg={"white"}>
         <Stack
           spacing={8}
           mx={"auto"}
@@ -62,40 +74,39 @@ function Details() {
           px={6}
         >
           <Steps current={current} items={items} />
-      <div style={contentStyle}>{steps[current].content}</div>
-      <div
-        style={{
-          marginTop: 24,
-        }}
-      >
-        {current < steps.length - 1 && (
-          <Button type="primary" onClick={() => next()}>
-            Next
-          </Button>
-        )}
-        {current === steps.length - 1 && (
-          <Button
-            type="primary"
-            onClick={() => message.success("Processing complete!")}
-          >
-            Submit
-          </Button>
-        )}
-        {current > 0 && (
-          <Button
+          <div style={contentStyle}>{steps[current].content}</div>
+          <div
             style={{
-              margin: "0 8px",
+              marginTop: 24,
             }}
-            onClick={() => prev()}
           >
-            Previous
-          </Button>
-        )}
-      </div>
+            {current < steps.length - 1 && (
+              <Button type="primary" onClick={() => next()}>
+                Next
+              </Button>
+            )}
+            {current === steps.length - 1 && (
+              <Button
+                type="primary"
+                onClick={() => message.success("Processing complete!")}
+              >
+                Submit
+              </Button>
+            )}
+            {current > 0 && (
+              <Button
+                style={{
+                  margin: "0 8px",
+                }}
+                onClick={() => prev()}
+              >
+                Previous
+              </Button>
+            )}
+          </div>
         </Stack>
       </Flex>
-
-  </ConfigProvider>
+    </ConfigProvider>
   );
 }
 

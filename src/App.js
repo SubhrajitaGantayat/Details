@@ -6,10 +6,10 @@ import Tickets from "./Components/Tickets";
 function App() {
   return (
     <div >
-      {/* <Details/>  */}
+      <Details/> 
       {/* <BasicDetails/> */}
       {/* <RegistrationDetails/> */}
-      <Tickets/>
+      {/* <Tickets/> */}
     </div>
   );
 }

@@ -47,7 +47,6 @@ function BasicDetails() {
         borderRadius={"20px 20px 20px 20px"}
         //px={1} py={2}
       >
-       
         <Stack
           spacing={2}
           mx={"auto"}
@@ -57,15 +56,15 @@ function BasicDetails() {
           py={8}
           px={2}
         >
-           <Heading
-          bg={"white"}
-          color={"black"}
-          fontSize={"4xl"}
-          align={"left"}
-          borderRadius={"20px 20px 0px 0px"}
-        >
-          Basic Details
-        </Heading>
+          <Heading
+            bg={"white"}
+            color={"black"}
+            fontSize={"4xl"}
+            align={"left"}
+            borderRadius={"20px 20px 0px 0px"}
+          >
+            Basic Details
+          </Heading>
           {/* <Box
           rounded={"lg"}
           background={
@@ -180,7 +179,7 @@ function BasicDetails() {
               background={
                 "linear-gradient(90deg, rgba(254, 254, 254, 0.56) 1.09%, rgba(255, 255, 255, 0.16) 100%)"
               }
-              height={"30vh"}
+              height={"20vh"}
               type="text"
               autoComplete="off"
             />
