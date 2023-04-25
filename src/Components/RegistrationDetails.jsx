@@ -159,7 +159,7 @@ function RegistrationDetails() {
                   type="file"
                   accept="image/*"
                   onChange={handleImageUpload}
-                  isDisabled={images.length >= 3}
+                  isDisabled={images.length >= 1}
                   display="none"
                   id="image-input"
                 />
@@ -172,7 +172,7 @@ function RegistrationDetails() {
                     w="8rem"
                     h="8rem"
                     cursor="pointer"
-                    disabled={images.length >= 3}
+                    disabled={images.length >= 1}
                     _disabled={{
                       opacity: 0.4,
                       cursor: "not-allowed",

@@ -47,21 +47,26 @@ function BasicDetails() {
     setIsLoading(true);
     const file = event.target.files[0];
 
-    try {
-      const newImage = { file };
-      console.log(newImage);
-      setUserImage(newImage);
-    } catch (error) {
-      console.error(error);
-      toast({
-        title: "Error",
-        description: "Failed to upload image.",
-        status: "error",
-        duration: 3000,
-        isClosable: true,
-      });
-    } finally {
-      setIsLoading(false);
+    if (file.type.split("/")[0] === "image") {
+      try {
+        const newImage = { file };
+        console.log(newImage);
+        setUserImage(newImage);
+      } catch (error) {
+        console.error(error);
+        toast({
+          title: "Error",
+          description: "Failed to upload image.",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
+      } finally {
+        setIsLoading(false);
+      }
+    } else {
+      console.log("This is not an image file");
+      return;
     }
   };
 
@@ -114,7 +119,7 @@ function BasicDetails() {
                     type="file"
                     accept="image/*"
                     onChange={handleImageUpload}
-                    isDisabled={isLoading}
+                    //isDisabled={isLoading}
                     display="none"
                     id="image-input"
                   />
@@ -149,7 +154,7 @@ function BasicDetails() {
                       borderRadius={25}
                       mt="10%"
                       cursor="pointer"
-                      disabled={isLoading}
+                      //disabled={isLoading}
                       transition={"all ease-in-out 100ms"}
                       _hover={{ transform: "scale(1.05)" }}
                       _disabled={{
@@ -157,17 +162,9 @@ function BasicDetails() {
                         cursor: "not-allowed",
                       }}
                     >
-                      {isLoading ? (
-                        <CircularProgress
-                          size="28px"
-                          isIndeterminate
-                          color="teal"
-                        />
-                      ) : (
-                        <Box as="span" fontSize="sm">
-                          Upload Image
-                        </Box>
-                      )}
+                      <Box as="span" fontSize="sm">
+                        Upload Image
+                      </Box>
                     </Button>
                   </label>
                 </Flex>

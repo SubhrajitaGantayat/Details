@@ -13,6 +13,10 @@ import { Stack } from "@chakra-ui/react";
 import { Flex } from "@chakra-ui/react";
 
 function JobsDetails() {
+
+  const [checked1, setChecked1] = useState(false)
+  const [checked2, setChecked2] = useState(false)
+
   const steps = [
     {
       title: "Job Basics",
@@ -28,7 +32,7 @@ function JobsDetails() {
     },
     {
       title: "Applicant Details",
-      content: <JobApplicantDetails />,
+      content: <JobApplicantDetails checked1={checked1} checked2={checked2} setChecked1={setChecked1} setChecked2={setChecked2} />,
     },
   ];
 
@@ -87,9 +91,10 @@ function JobsDetails() {
                 Next
               </Button>
             )}
-            {current === steps.length - 1 && (
+            { current === steps.length - 1  && (
               <Button
                 type="primary"
+                disabled={ ( checked1 && checked2 ) ? false : true }
                 onClick={() => message.success("Processing complete!")}
               >
                 Post

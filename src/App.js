@@ -9,7 +9,7 @@ function App() {
     <div >
       {/* <Details/>  */}
       {/* <Tickets/> */}
-      {/* <JobsDetails/> */}
+      <JobsDetails/>
     </div>
   );
 }

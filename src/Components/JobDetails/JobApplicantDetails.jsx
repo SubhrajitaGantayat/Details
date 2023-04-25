@@ -12,7 +12,10 @@ import {
   Text,
 } from "@chakra-ui/react";
 
-function JobApplicantDetails() {
+function JobApplicantDetails( { checked1, checked2, setChecked1, setChecked2 } ) {
+
+  
+
   return (
     <div>
       <Flex
@@ -106,14 +109,14 @@ function JobApplicantDetails() {
           </Flex>
 
           <Stack>
-            <Checkbox defaultChecked color={"black"}>
+            <Checkbox  color={"black"} checked={checked1} onChange={ (e) => setChecked1(e.target.checked) }>
               <Text mt={4} ml={-2}>
                 By continuing, you agree to LOGO Jobs Terms and Conditions
                 including our policies prohibiting discriminatory job posts.
               </Text>
             </Checkbox>
 
-            <Checkbox defaultChecked color={"black"}>
+            <Checkbox color={"black"} checked={checked2} onChange={ (e) => setChecked2(e.target.checked) }>
               <Text mt={4} ml={5}>
                 The #Hiring photo frame will be added to your profile.We'll
                 notify your network that you're hiring.
