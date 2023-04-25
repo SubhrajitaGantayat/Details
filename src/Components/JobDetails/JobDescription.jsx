@@ -8,9 +8,16 @@ import {
   Stack,
   Heading,
   Textarea,
+  Select,
+  Button,
 } from "@chakra-ui/react";
 
-function Description() {
+import { IoMdAdd } from "react-icons/io";
+//import { AddIcon } from "@chakra-ui/icons";
+
+//import { Button } from "antd";
+
+function JobDescription() {
   return (
     <div>
       <Flex
@@ -43,19 +50,38 @@ function Description() {
             Description
           </Heading>
 
-          <FormControl color={"black"} isRequired>
-            <FormLabel>Eligibility</FormLabel>
-            <Input
-              background={
-                "linear-gradient(90deg, rgba(254, 254, 254, 0.56) 1.09%, rgba(255, 255, 255, 0.16) 100%)"
-              }
-              type="text"
-              autoComplete="off"
-            />
-          </FormControl>
+          <Flex justifyContent={"space-between"}>
+            <FormControl color={"black"} w="48%" isRequired>
+              <FormLabel>Job Type</FormLabel>
+              <Select
+                background={
+                  "linear-gradient(90deg, rgba(254, 254, 254, 0.56) 1.09%, rgba(255, 255, 255, 0.16) 100%)"
+                }
+                placeholder="Select option"
+              >
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+              </Select>
+            </FormControl>
+
+            <FormControl color={"black"} w="48%" isRequired>
+              <FormLabel>Job Mode</FormLabel>
+              <Select
+                background={
+                  "linear-gradient(90deg, rgba(254, 254, 254, 0.56) 1.09%, rgba(255, 255, 255, 0.16) 100%)"
+                }
+                placeholder="Select option"
+              >
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+              </Select>
+            </FormControl>
+          </Flex>
 
           <FormControl color={"black"} isRequired>
-            <FormLabel>About the internship</FormLabel>
+            <FormLabel>Description</FormLabel>
             <Textarea
               background={
                 "linear-gradient(90deg, rgba(254, 254, 254, 0.56) 1.09%, rgba(255, 255, 255, 0.16) 100%)"
@@ -77,10 +103,19 @@ function Description() {
               autoComplete="off"
             />
           </FormControl>
+
+          <FormControl color={"black"} isRequired>
+            <FormLabel>Skills</FormLabel>
+            <Stack direction="row" spacing={4}>
+              <Button leftIcon={<IoMdAdd />} colorScheme="teal" variant="solid">
+                Add your skills
+              </Button>
+            </Stack>
+          </FormControl>
         </Stack>
       </Flex>
     </div>
   );
 }
 
-export default Description;
+export default JobDescription;

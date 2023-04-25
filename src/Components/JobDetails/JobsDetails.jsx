@@ -1,32 +1,34 @@
 import React from "react";
 import { Button, message, Steps, theme } from "antd";
 import { useState } from "react";
-import BasicDetails from "./BasicDetails";
-import RegistrationDetails from "./RegistrationDetails";
-import Location from "./Location";
-import Description from "./Description";
+
+import JobBasics from "./JobBasics";
+import JobLocation from "./JobLocation";
+import JobDescription from "./JobDescription";
+import JobApplicantDetails from "./JobApplicantDetails";
+
 import { ConfigProvider } from "antd";
 
 import { Stack } from "@chakra-ui/react";
 import { Flex } from "@chakra-ui/react";
 
-function Details() {
+function JobsDetails() {
   const steps = [
     {
-      title: "Basic Details",
-      content: <BasicDetails />,
+      title: "Job Basics",
+      content: <JobBasics />,
     },
     {
       title: "Location",
-      content: <Location />,
+      content: <JobLocation />,
     },
     {
       title: "Description",
-      content: <Description />,
+      content: <JobDescription />,
     },
     {
-      title: "Registration Details",
-      content: <RegistrationDetails />,
+      title: "Applicant Details",
+      content: <JobApplicantDetails />,
     },
   ];
 
@@ -90,7 +92,7 @@ function Details() {
                 type="primary"
                 onClick={() => message.success("Processing complete!")}
               >
-                Submit
+                Post
               </Button>
             )}
             {current > 0 && (
@@ -110,4 +112,4 @@ function Details() {
   );
 }
 
-export default Details;
+export default JobsDetails;

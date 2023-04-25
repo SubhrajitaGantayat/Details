@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 import {
   Flex,
-  Box,
   FormControl,
   FormLabel,
   Input,
@@ -12,43 +11,43 @@ import {
   Button,
   Heading,
   InputLeftAddon,
-  Textarea,
 } from "@chakra-ui/react";
 
 import { BsFacebook } from "react-icons/bs";
 import { AiOutlineInstagram } from "react-icons/ai";
 
-import { Image } from "@chakra-ui/react";
-import { Select } from "@chakra-ui/react";
-//import ModeofEvent_Location from "./ModeofEvent_Location";
-import { useRadioGroup } from "@chakra-ui/react";
-
 function Location() {
-  const options = ["Online Mode", "Offline Mode"];
-
-  const { getRootProps, getRadioProps } = useRadioGroup({
-    name: "framework",
-    defaultValue: "react",
-    onChange: console.log,
-  });
-
-  const group = getRootProps();
-
   const [checkOnline, setCheckOnline] = useState(false);
   const [checkOffline, setCheckOffline] = useState(false);
 
+  const [mode, setMode] = useState("");
+
+  // const handleOnline = () => {
+  //   setMode("online")
+  //   setCheckOnline(!checkOnline);
+  //   if (checkOffline) {
+  //     setCheckOffline(false);
+  //   }
+  // };
+
+  // const handleOffline = () => {
+  //   setMode("offline")
+  //   setCheckOffline(!checkOffline);
+  //   if (checkOnline) {
+  //     setCheckOnline(false);
+  //   }
+  // };
+
   const handleOnline = () => {
-    setCheckOnline(!checkOnline);
-    if (checkOffline) {
-      setCheckOffline(false);
-    }
+    setMode("online");
+    setCheckOnline(true);
+    setCheckOffline(false);
   };
 
   const handleOffline = () => {
-    setCheckOffline(!checkOffline);
-    if (checkOnline) {
-      setCheckOnline(false);
-    }
+    setMode("offline");
+    setCheckOffline(true);
+    setCheckOnline(false);
   };
 
   return (
@@ -70,7 +69,7 @@ function Location() {
           mx={"auto"}
           //   borderWidth={1}
           //   borderColor={"white"}
-          width={{ md: "60%", sm: "100%" }}
+          width={{ md: "60%", base: "90%" }}
           py={8}
           px={2}
         >
@@ -86,20 +85,26 @@ function Location() {
 
           <FormControl color={"black"} isRequired>
             <FormLabel>Mode of Event </FormLabel>
-            <HStack
-            //{...group}
-            >
-              {/* {options.map((value) => {
-                const radio = getRadioProps({ value });
-                return (
-                  <ModeofEvent_Location key={value} {...radio}>
-                    {value}
-                  </ModeofEvent_Location>
-                );
-              })} */}
-
-              <Button onClick={handleOnline}>Online</Button>
-              <Button onClick={handleOffline} ml="2%">
+            <HStack>
+              <Button
+                borderWidth={1}
+                style={{
+                  backgroundColor: mode === "online" ? "black" : "white",
+                  color: mode === "online" ? "white" : "black",
+                }}
+                onClick={handleOnline}
+              >
+                Online
+              </Button>
+              <Button
+                borderWidth={1}
+                style={{
+                  backgroundColor: mode === "offline" ? "black" : "white",
+                  color: mode === "offline" ? "white" : "black",
+                }}
+                onClick={handleOffline}
+                ml="2%"
+              >
                 Offline
               </Button>
             </HStack>
